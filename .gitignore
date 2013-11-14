@@ -1,0 +1,6 @@
+node_modules
+.DS_Store
+stylesheets/css
+stylesheets/components
+.sass-cache
+components

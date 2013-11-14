@@ -1,0 +1,9 @@
+{
+  "name": "skeleton",
+  "devDependencies": {
+    "sass-mq": "~1.1.1",
+    "normalize-scss": "~2.1.2",
+    "jquery": "~2.0.3",
+    "lodash": "~2.3.0"
+  }
+}
