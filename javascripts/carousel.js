@@ -1,6 +1,7 @@
-var hcom = {};
-
-hcom.Carousel = function() {
+/**
+ * Carousel prototype
+ */
+var Carousel = function() {
 
   var slide = _.template('<div class="slide <%= side %>"><img src="" alt=""/></div>');
   var thumbnails = $('.thumbnails');
@@ -120,4 +121,4 @@ hcom.Carousel = function() {
 
 }();
 
-hcom.Carousel.init();
+Carousel.init();
