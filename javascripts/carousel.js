@@ -2,7 +2,6 @@
  * Carousel prototype
  */
 var Carousel = function() {
-
   var slide = _.template('<div class="slide <%= side %>"><img src="" alt=""/></div>');
   var thumbnails = $('.thumbnails');
 
@@ -121,19 +120,16 @@ var Carousel = function() {
     prev: prevSlide,
     next: nextSlide
   };
-
 }();
 
 /**
  * Add touch to the carousel
  */
 Carousel.touch = function() {
-
   var frame = $('.frame');
   var wrapper = frame.find('.touch-wrapper');
   var threshold = 100;
   var startX = -1;
-  var finished = false;
 
   function init() {
     frame.on('touchstart', onStart);
@@ -144,33 +140,19 @@ Carousel.touch = function() {
   function onStart(event) {
     startX = event.originalEvent.changedTouches[0].pageX;
     wrapper.addClass('in-motion');
-    finished = false;
   }
 
   function onMove (event) {
-    event.preventDefault();
-
-    if (finished) return;
-
     var deltaX = (startX - event.originalEvent.changedTouches[0].pageX) * -1;
-
-    if (deltaX > threshold || deltaX < threshold * -1) {
-      finished = true;
-    } else {
-      wrapper.css('left', deltaX);
-    }
+    wrapper.css('left', deltaX);
   }
 
   function onEnd(event) {
     var deltaX = (startX - event.originalEvent.changedTouches[0].pageX) * -1;
-
     wrapper.removeClass('in-motion').css('left', 0);
-
     if (deltaX > threshold) {
-      console.log('prev');
       Carousel.prev();
     } else if (deltaX < threshold * -1) {
-      console.log('next');
       Carousel.next();
     }
   }
@@ -178,7 +160,6 @@ Carousel.touch = function() {
   return {
     init: init
   };
-
 }();
 
 
