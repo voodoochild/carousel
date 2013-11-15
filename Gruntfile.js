@@ -28,7 +28,7 @@ module.exports = function(grunt) {
         }
       },
       html: {
-        files: ['index.html'],
+        files: ['index.html', 'small.html'],
         options: {
           livereload: true
         }

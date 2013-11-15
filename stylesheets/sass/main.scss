@@ -16,12 +16,12 @@ body {
 div.carousel {
   margin: 0 auto;
   position: relative;
-  width: 817px;
+  width: $carouselWidth;
 }
 
 div.frame {
   background-color: #333;
-  height: 530px;
+  height: $carouselHeight;
   overflow: hidden;
   position: relative;
 }
@@ -37,9 +37,11 @@ div.touch-wrapper {
 }
 
 div.slide {
+  height: $carouselHeight;
   left: 0;
   position: absolute;
   transition: left 0.2s ease-in-out;
+  width: $carouselWidth;
 
   &.nudging {
     transition: none;
@@ -56,11 +58,11 @@ div.slide {
   }
 
   &.prev {
-    left: -817px;
+    left: -1 * $carouselWidth;
   }
 
   &.next {
-    left: 817px;
+    left: $carouselWidth;
   }
 }
 
@@ -99,13 +101,12 @@ button {
   background-color: $semiBlack;
   border: none;
   color: lighten(#000, 5%);
-  height: 530px;
+  height: $carouselHeight;
   outline: none;
   position: absolute;
   width: 50px;
   z-index: 2;
 
-  // &:hover,
   &:focus {
     background-color: $hardBlack;
     color: lighten(#000, 50%);
@@ -113,5 +114,21 @@ button {
 
   &.right {
     right: 0;
+  }
+}
+
+.small-images {
+  .slide img {
+    margin: auto;
+    position: absolute;
+    top: 0; right: 0; bottom: 0; left: 0;
+
+    &.prev-ghost {
+      right: 80%; left: auto;
+    }
+
+    &.next-ghost {
+      right: auto; left: 80%;
+    }
   }
 }
