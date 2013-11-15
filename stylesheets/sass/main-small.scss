@@ -1,0 +1,144 @@
+@charset "UTF-8";
+
+@import '_mixins';
+@import '_base';
+@import '_type';
+
+$carouselHeight: 420px;
+
+* {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+  background: $background;
+}
+
+div.carousel {
+  margin: 0 auto;
+  position: relative;
+  width: $carouselWidth;
+}
+
+div.frame {
+  background-color: #333;
+  height: $carouselHeight;
+  overflow: hidden;
+  position: relative;
+}
+
+div.touch-wrapper {
+  position: absolute;
+  left: 0;
+  transition: left 0.2s ease-in-out;
+
+  &.in-motion {
+    transition: none;
+  }
+}
+
+div.slide {
+  height: $carouselHeight;
+  left: 200px;
+  position: absolute;
+  transition: left 0.2s ease-in-out;
+  width: 417px;
+
+  &.nudging {
+    transition: none;
+  }
+
+  &.loading {
+    background-image: url(../../images/loading.gif);
+    background-position: center;
+    background-repeat: no-repeat;
+
+    img {
+      visibility: hidden;
+    }
+  }
+
+  &.leftmost {
+    left: -1 * 634px;
+  }
+
+  &.prev {
+    left: -1 * 217px;
+  }
+
+  &.next {
+    left: 617px;
+  }
+
+  &.rightmost {
+    left: 1034px;
+  }
+}
+
+ul.thumbnails {
+  list-style: none;
+  margin: 3px 0 0 0;
+  overflow: hidden;
+  padding: 0;
+
+  li {
+    float: left;
+    margin: 0 3px 0 0;
+    position: relative;
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    a {
+      outline: none;
+    }
+
+    // Only bind these for non–touch devices
+    a:focus:after,
+    a:hover:after {
+      @include thumbOverlay($semiBlack);
+    }
+
+    &.selected a:after {
+      @include thumbOverlay($hardBlack);
+    }
+  }
+}
+
+button {
+  background-color: $semiBlack;
+  border: none;
+  color: lighten(#000, 5%);
+  height: $carouselHeight;
+  outline: none;
+  position: absolute;
+  width: 50px;
+  z-index: 2;
+
+  &:focus {
+    background-color: $hardBlack;
+    color: lighten(#000, 50%);
+  }
+
+  &.right {
+    right: 0;
+  }
+}
+
+.small-images {
+  .slide img {
+    margin: auto;
+    position: absolute;
+    top: 0; right: 0; bottom: 0; left: 0;
+
+    &.prev-ghost {
+      right: 80%; left: auto;
+    }
+
+    &.next-ghost {
+      right: auto; left: 80%;
+    }
+  }
+}
