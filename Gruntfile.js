@@ -8,7 +8,8 @@ module.exports = function(grunt) {
           sourcemap: false
         },
         files: {
-          'stylesheets/css/main.css': 'stylesheets/sass/main.scss'
+          'stylesheets/css/main.css': 'stylesheets/sass/main.scss',
+          'stylesheets/css/main-small.css': 'stylesheets/sass/main-small.scss'
         }
       }
     },
